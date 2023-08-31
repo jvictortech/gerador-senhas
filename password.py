@@ -12,13 +12,13 @@ class GerarSenha:
             sg.Input(key='nome', size =(20, 1))],
             [sg.Text('E-mail/Usuário', size = (10,1)), 
             sg.Input(key='usuario', size=(20, 1))],
-            [sg.Text('Quantidade de caracteres'), sg.Combo(values=List(
+            [sg.Text('Quantidade de caracteres'), sg.Combo(values=list(
             range(30)), key='total_chars', default_value=1, size=(3,1))],
             [sg.Output(size=(32,5))],
             [sg.Button('GERAR')]
         ] 
 
-        self.janela= sg.Window('Gerador de Senhas', layout, finalize=True)
+        self.janela= sg.Window('Gerador de Senhas', layout)
         
     def Inicio(self):
         while True:
@@ -27,7 +27,7 @@ class GerarSenha:
                 break
             if evento == 'GERAR':
                 nova_senha = self.gerador(valores)
-               # print(nova_senha)
+                print(nova_senha)
                 self.salvar_senha(nova_senha, valores)    
 
     def gerador(self,valores):
